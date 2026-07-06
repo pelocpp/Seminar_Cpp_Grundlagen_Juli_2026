@@ -1,0 +1,270 @@
+=========================================
+
+C++ Seminar 
+
+Informatik // IMMD  Institut f. Mathematische Maschinen
+
+Peter Loos  /  Yavuz
+
+peter.loos@gmx.de
+-----------------
+
+3 Tage C++ 
+
+Java, C#, JavaScript, Python
+
+=========================================
+
+Unterlagen:
+
+https://github.com/pelocpp
+
+https://github.com/pelocpp/cpp_introduction
+
+=========================================
+
+C/ C++ (?) 
+Was sind meine Erwartungen
+Was soll es sein ...
+
+
+Focus: Pointer, Referenzen, STL, 
+
+=========================================
+
+a) Github
+
+b) Visual Studio (NICHT: Code) C++ 
+
+   Einfach ....  Vorteil: Da ist (Installation) C/C++ dabei ...
+
+
+=========================================
+
+Visual Studio:
+
+Visual Studio Community 2026  / 2022
+
+=========================================
+
+Erste Schritte:
+
+a) Right-Click auf der Datei: Menü Compile ==> Grammatik / Syntax
+
+b) Right-Click auf dem Projekt: Build / Erstellen ==> Maschinenprogramm (.exe Datei)
+
+====================
+
+Wie findet der Build statt?
+
+====================
+
+Unser erstes C++ Programm:
+
+Klasse und Objekt:
+
+a) Klassen sind die Weiterführung von Strukturen aus C.
+
+b) Variablen von Klassen nennt man Objekt / Instanz
+
+Umsetzung:  3 Dateien
+
+i)    Header-Datei (Dateiendung .h):
+
+ii)   Implementierungs-Datei (Dateiendung .cpp):
+      Realisierung der Methoden der Klasse
+
+iii)  Hauptprogramm / Anwendung / Benutzer der Klasse Time
+
+==============================================
+
+#include <iostream>  <=== Standard Dateien
+
+#include "Time.h"    <=== unsere eigenen Dateien / benutzer-definierte Dateien / user-defined File
+
+==============================================
+
+Ausgabe:
+
+Klassisches Vorgehen:  std::cout
+
+Modernes Vorgehen:     std::println  // ähnlich zu C:  printf
+
+==============================================
+
+Debuggen:
+
+Für einfache Schritte sehr einfach:
+
+a) Haltepunkt / Break Point: Mit der Maus
+
+b) Bis zum Haltepunkt laufen: Grüner "dicker" Pfeil / Programm starten
+
+c) Rotes Rechteck: Stoppen / Programm beenden
+
+d) Einzelschritt / Eine Zeile ausführen:    F10 oder "Pfeil nach rechts"
+
+e) Einzelschritt für eine Methode / Unterprogramm:
+
+   F11 oder "Pfeil nach unten"
+
+
+=====================================================================
+
+Zugriffsklassen:
+
+"Wie" kann man auf die Daten und Methoden eines Objekts zugreifen:
+
+i) Nicht immer :)
+
+a) public versus private
+
+b) protected: Spielt nur bei der Vererbung eine Rolle
+
+Welche gibt es: public, private, protected
+
+=====================================================================
+
+Initialisierung von Objekten: Konstruktoren
+
+Schwachstelle:
+
+    Time now;     // ein Objekt
+
+Objekt now hat so keine initialien Werten. Das will man nicht :)
+
+=======================================================================
+
+Was ist die Element-Initialisierungsliste (Member Initializer List) ???
+
+A) Sie wurde im Umfeld der Vererbung eingeführt // sie ist dort wichtig.
+
+B) Man kann sie aber auch ohne Vererbung einsetzen:
+
+   Sie stellt dann  eine gewisse abgekürzte Schreibweise zur Verfügung.
+
+=====================================================================
+
+   ACHTUNG: Stolperfalle bei C++ und Konstruktoren
+
+    Time now();
+
+In dieser Zeile wird NICHT (!!!!!!!!!!!!!!!!) 
+der Konstruktor OHNE Parameter aufgerufen !!!
+
+Was findet dann statt:
+
+Es wird eine freie Funktion now deklariert, keine Parameter (), mit Rückgabetyp Time.
+
+Möchte man den Konstruktor OHNE Parameter aufrufen: 
+Dann müssen die Klammern weg !!!!!!!!!!!!
+
+==========================================
+
+static:   Modulkonzept für Arme
+
+==========================================
+
+Zeiger, Adressen, Referenzen in C/C++
+-------------------------------------
+
+Unter historischer Berücksichtigung:
+
+A) Was gibt es in C?
+
+   Adressen (address) und Zeiger (Pointer)
+
+   int*   : Beschreibt einen Datentyp: Es ist ein Adress Datentyp.
+
+   Beispiel:  0x00000084f3eff 864
+
+   Was liegt hinter einer Adresse // Wieviele Daten liegen hinter einer Adresse? 1 Byte
+
+   Ein int belegt 4 Bytes:
+
+   0x00000084f3eff 864 beschreibt das ERSTE Byte einer int-Variablen // Anfangsadresse
+   0x00000084f3eff 865
+   0x00000084f3eff 866
+   0x00000084f3eff 867
+
+   Adresse des nächsten, frei verfügbaren Speichers:
+   0x00000084f3eff 868
+
+   Nebenbemerkung: Was sind das für Bytes zwischen 2 Variablen:
+
+	0x0000006E796FF318  cc cc cc cc  ÌÌÌÌ
+	0x0000006E796FF31C  cc cc cc cc  ÌÌÌÌ
+	0x0000006E796FF320  cc cc cc cc  ÌÌÌÌ
+	0x0000006E796FF324  cc cc cc cc  ÌÌÌÌ
+	0x0000006E796FF328  cc cc cc cc  ÌÌÌÌ
+	0x0000006E796FF32C  cc cc cc cc  ÌÌÌÌ
+	0x0000006E796FF330  cc cc cc cc  ÌÌÌÌ
+	0x0000006E796FF334  cc cc cc cc  ÌÌÌÌ
+
+	Das sind zum Zwecke des Testens / Fehlersuchens so genannte "Schattebytes" / Shadow Bytes:
+	Whyyyyyyyyy: Wenn einer dieser cc-Werte überschrieben wird, dann bricht der Debugger die Ausführung des Programms ab !!!
+
+
+	Wie kann man mit Adressen arbeiten:
+
+	ZWEI Operatoren:
+
+	a) &:  Bilde eine Adresse
+
+	b) *:  Indirekter Zugriff auf den Speicher hinter der Adresse (lesend oder schreibend)
+
+    // -----------------------------------
+    // Zeigerarithmetik
+
+    // a) Wert eines Zeigers verändern / inkrementieren
+    ip++;
+
+	Beispiel:
+
+	Vorher:
+
+	ip:  0x0000006E796FF3 18
+
+	Was steht nach ip++ für ein Wert in ip ????
+
+	Antwort: 0x0000006E796FF3 19
+
+	Idee / Konzeption: Mit ++ auf einer Adresse will man im Speicher zur nächsten FREIEN Stelle gehen.
+
+	0x0000006E796FF3 18
+	0x0000006E796FF3 19
+	0x0000006E796FF3 1A
+	0x0000006E796FF3 1B
+
+	0x0000006E796FF3 1C  erste freie Stelle
+
+
+===========================================================================
+
+Spielen Adressen in C++ auch eine Rolle:
+
+Ja, aber an einer anderen Stelle: Dynamische Speicherverwaltung.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+B) Was gibt es in C++?
+
+Bemerkung: C ist in C++ enthalten !
+
+
