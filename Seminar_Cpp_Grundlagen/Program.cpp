@@ -6,10 +6,11 @@
 
 // externe Funktionen
 extern void test_pointer_references();
+extern void test_passing_parameters();
 
 int main()
 {
-    test_pointer_references();
+    test_passing_parameters();
 
     return 1;
 }

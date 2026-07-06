@@ -16,8 +16,11 @@ static void test_pointer_references_C()
 
     std::println("n = {}", n);
 
-    // a) Bildung einer Adresse in C
-    int* ip = &n;
+    // a) Bildung einer Adresse in C // Anweisung // Statement
+   // int* ip = &n;
+
+    int* ip = NULL;   // Variablenvereinbarung (ip) mit Vorbelegung
+    ip = &n;          // Anweisung // Statement (Wertzuweisung) // Adress-Operator & in einer Anweisung
 
     // Weise der Variablen n den Wert 124 zu, ohne den Bezeichner 'n' dabei zu verwenden :)
     *ip = 124;     // Schreibend
@@ -43,7 +46,21 @@ static void test_pointer_references_C()
 
 static void test_pointer_references_Cpp()
 {
+    // B) Was gibt es in C++ ?
 
+    int n = 123;
+
+    // man kann zu n einen zweiten Namen definieren, der - hinter den Kulissen - für die Adresse steht.
+
+    // Variablenvereinbarung
+    int& rn = n;     // & als Modifizierer des Datentyps int in einer Variablenvereinbarung
+
+    //  int& rn2 = NULL;   // Geht NICHT !!!
+
+    // rn ist ein zweiter Name / Alias für eine vorhandene Variable
+    rn = 124;
+
+    rn++;
 }
 
 void test_pointer_references()

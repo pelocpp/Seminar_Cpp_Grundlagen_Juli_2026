@@ -139,10 +139,11 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Pointer_Refernces.cpp" />
+    <ClCompile Include="04_PassingParameters.cpp" />
+    <ClCompile Include="03_Pointer_Refernces.cpp" />
     <ClCompile Include="Program.cpp" />
-    <ClCompile Include="This.cpp" />
-    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="02_This.cpp" />
+    <ClCompile Include="01_Time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Notizzettel.txt" />
@@ -152,6 +153,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\01_Memory_Areas.png" />
+    <Image Include="..\02_Stack.png" />
+    <Image Include="..\03_Stack.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

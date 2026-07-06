@@ -18,13 +18,16 @@
     <ClCompile Include="Program.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp">
+    <ClCompile Include="01_Time.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="This.cpp">
+    <ClCompile Include="02_This.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pointer_Refernces.cpp">
+    <ClCompile Include="03_Pointer_Refernces.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="04_PassingParameters.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,5 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\01_Memory_Areas.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\02_Stack.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\03_Stack.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

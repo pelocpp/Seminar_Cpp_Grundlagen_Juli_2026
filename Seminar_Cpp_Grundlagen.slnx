@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Seminar_Cpp_Grundlagen/Seminar_Cpp_Grundlagen.vcxproj" />
+  <Project Path="Seminar_Cpp_Grundlagen/Seminar_Cpp_Grundlagen.vcxproj" Id="2d133211-f9c8-4c8e-9410-5b881015463f" />
 </Solution>

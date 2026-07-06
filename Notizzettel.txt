@@ -172,7 +172,7 @@ Unter historischer Berücksichtigung:
 
 A) Was gibt es in C?
 
-   Adressen (address) und Zeiger (Pointer)
+   Adressen (Address) und Zeiger (Pointer).
 
    int*   : Beschreibt einen Datentyp: Es ist ein Adress Datentyp.
 
@@ -238,33 +238,82 @@ A) Was gibt es in C?
 
 	0x0000006E796FF3 1C  erste freie Stelle
 
-
 ===========================================================================
 
 Spielen Adressen in C++ auch eine Rolle:
 
 Ja, aber an einer anderen Stelle: Dynamische Speicherverwaltung.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+===========================================================================
+===========================================================================
 
 B) Was gibt es in C++?
 
 Bemerkung: C ist in C++ enthalten !
 
+===> Referenzen.
+
+Vorbemerkung:
+
+Ist doch ähnlich zu Pointer / Adressen. Whyyyy? 
+Man wollte C++ an manchen Stellen einfacher lesbar machen.
+
+=============================================================
+
+C++:  Ist streng typisiert
+
+int n = 123;
+
+n = "ABC";   // NIEEEEEEEEEEEEEEEEEEEEE // ERROR !!!!!!!!!!!!!!!!!!!!!
+
+
+
+Python:   Typen werden zur Laufzeit den Bezeichner gebildet.
+
+n = 123    // hmm, n ist ein int // n zeigt auf ein int ...
+
+n = "ABC"  // hmmm, JETZT zeigt n auf eine Zeichenkette
+
+=============================================================
+
+Wo werden Referenzen in C++ verwendet ????????????????
+
+
+Parameter-Übergabe :  Welche Formen ....
+
+Stack / Heap
+
+Stack: Ist für Parameter zuständig
+Heap:  Ist für dynamische Daten zuständig
+
+a) Wie sieht die Parameter-Übergabe im Detail aus ???
+
+   Da gibt es mehrere Optionen:
+
+   i) Call-by-Value       // Call-by-Copy
+
+   ii) Call-by-Address    // Das ist ein C-Sprachmittel (damit auch in C++ verfügbar)
+
+   ii) Call-by-Reference  // Das ist ein C++-Sprachmittel (nicht in C verfügbar)
+
+         Hinter den Kulissen: Quasi dasselbe wie Call-by-Address
+		 Schreibweise / Programmierung: Erheblich einfacher / besser lesbar
+
+
+b) Wo liegen lokale Variablen im Speicher ???
+
+   i) Auf dem Stack
+   ii) Dieser wächst pro Unterprogramm-Aufruf in eine Richtung
+   iii) Nach Rückkehr verkleinert es sich in der anderen Richtung
+   iv) Wird durch Register wie den SP (Stack Pointer) verwaltet.
+
+=================================================================
+
+Weiter am Dienstag morgen:
+
+a) Anwendung der Parameterübergabetechnik auf Methoden einer Klasse
+
+b) const
+
+....
 
