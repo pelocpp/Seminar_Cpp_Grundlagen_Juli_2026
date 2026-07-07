@@ -653,3 +653,9 @@ C) In einer Methode print werden die Lose ausgegeben.
 
 D) In einer Methode release wird das dynamisch angelegte Feld freigegeben (delete[])
 
+==========================================================================
+
+== Musterlösung
+
+== Destruktor
+
