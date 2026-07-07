@@ -58,5 +58,11 @@
     <Image Include="..\03_Stack.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\05_Stack_With_Objects.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\06_Heap_Dynamic.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -160,6 +160,8 @@
     <Image Include="..\01_Memory_Areas.png" />
     <Image Include="..\02_Stack.png" />
     <Image Include="..\03_Stack.png" />
+    <Image Include="..\05_Stack_With_Objects.png" />
+    <Image Include="..\06_Heap_Dynamic.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
