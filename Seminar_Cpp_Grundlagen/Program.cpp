@@ -10,6 +10,62 @@ extern void test_passing_parameters();
 
 int main()
 {
+    // Thema: XXX
+
+    Time now(9, 7, 25);
+    now.print();
+
+    incrementSecond(now);
+    now.print();
+
+}
+
+
+
+int main_operators_overloading()
+{
+    // Parameterübergabe von Objekten
+    Time now(9, 7, 25);
+    now.print();
+
+    Time than(10, 7, 25);
+    than.print();
+
+    if (now.equal(than) == true) {
+        std::println("Sind gleich");
+    }
+    else {
+        std::println("Sind nicht gleich");
+    }
+
+    // Mit operator == besser lesbar
+    if (now == than) {                      // Infix-Notation: Der Operator steht ZWISCHEN zwei Operanden: a + b  
+    // if (now.operator==  (than) ) {       // Spielerei // nicht ernst gemeint // wenn Operator ist in der Klasse
+    // if ( operator != (now, than) ) {     // Spielerei // nicht ernst gemeint // wenn Operator ist außerhalb der Klasse
+        std::println("Sind gleich");
+    }
+    else {
+        std::println("Sind nicht gleich");
+    }
+
+    if (now != than) {
+        std::println("Sind nicht gleich");
+    }
+    else {
+        std::println("Sind gleich");
+    }
+
+
+    int total = getTotalSeconds(now);
+    std::println("total: {}", total);
+
+    return 1;
+}
+
+
+
+int main_passing_parameters()
+{
     test_passing_parameters();
 
     return 1;
@@ -25,9 +81,6 @@ int main_hello_world()
 
     return 0;
 }
-
-
-
 
 void stolperfalle()
 {
@@ -78,7 +131,7 @@ int main_example_time()
 
     int tmp = 11 * 60 * 60 + 31 * 60 + 30;
 
-    int totalSeconds = now.getTotalSeconds();
+   // int totalSeconds = now.getTotalSeconds();
 
     // Zugriff auf Methoden: Punkt Operator
     now.print();

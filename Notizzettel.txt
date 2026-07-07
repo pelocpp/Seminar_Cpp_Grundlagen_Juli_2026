@@ -299,6 +299,8 @@ a) Wie sieht die Parameter-Übergabe im Detail aus ???
          Hinter den Kulissen: Quasi dasselbe wie Call-by-Address
 		 Schreibweise / Programmierung: Erheblich einfacher / besser lesbar
 
+   Voreinstellung (Default) ist Call-by-Copy (Call-by-Value)
+
 
 b) Wo liegen lokale Variablen im Speicher ???
 
@@ -313,7 +315,131 @@ Weiter am Dienstag morgen:
 
 a) Anwendung der Parameterübergabetechnik auf Methoden einer Klasse
 
-b) const
+b) const:  Kommt noch
 
 ....
+
+
+=================================================================
+
+Überladen von Operatoren
+
+    if (now.equal(than) == true) {  
+
+Hmmm, wäre nicht folgende Zeile besser lesbar:
+
+int a, b;
+     
+	if (a == b) { ...
+
+    if (now == than) {  
+
+Gehr prinzipiell schon, aber wir müssen "den Operator == überladen"
+
+Wie geht das ???
+
+Wie das Erstellen / Schreiben einer normalen Methode:
+
+   Eigenschaft: Welchen Namen hat diese Methode:  operator ==
+
+Besonderfall:
+
+Wenn der Operator == realisiert wird, wird der Operator != automatisch vom Übersetzer erstellt.
+
+=========================================================================
+
+Nochmal Parameterübergabe:
+
+a) Auch Objekte können an Methoden / freie Funktionen übergeben werden (trivial)
+
+b) ACHTUNG: Call-by-Copy ist Voreinstellung
+
+c) Dies will man in den meisten Fällen vermeiden
+
+d) Lösung:  Call-by-Reference
+
+e) Theoretisch: Call-by-Address / mit Pointer: Unüblich, weil die Syntax von Referenzen einfacher ist.
+
+Fazit: Go-for  Call-by-Reference, wegen der Performanz ( das Erzeugen von Kopien kostet überfüssige Zeit )
+
+--------------------------
+
+Eine Ergänzung:
+
+i) Mit Referenzen bekommt man den Zugang zu einem Originalobjekt (Referenz = Alias)
+
+ii) Beim lesenden Zugriff sollte man das Originalobjekt schützen: Mit einer const - Referenz !!!!!!!!!!!!!
+
+    const beim Parameter
+
+iii) Man kann auch Methoden einer Klasse, die ihre eigenen Membervariablen LESEND verwendet, 
+     als const definieren ====> ein Schreiben von Membervariablen geht dann nicht. 
+
+	 const HINTER der Methode
+
+Fazit: Go-for const, um sichereren Quellcode zu erstellen.
+
+
+=========================================================
+
+Topic: "Freundschaft"  // friendship
+
+Beispiel:
+
+bool operator== (const Time& lhs, const Time& rhs)
+{
+    if (lhs.m_hours == rhs.m_hours && lhs.m_minutes == rhs.m_minutes && lhs.m_seconds == rhs.m_seconds) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+A) Geht so nicht, weil operator == ist eine freie Funktion: Diese hat keine Möglichkeit,
+auf private Member Variablen zuzugreifen.
+
+B) Hmmm, man könnte die Meinung haben, dass - in diesem Fall - der Operator == , auf 2 Time Objekt angewendet ,
+   irgendwie doch zur Klasse Time gehören sollte:
+
+   Das geht mit dem Schlüsselwort 'friend'
+
+ACHTUNG: Mit friend werden private Member zu public Member.
+
+Das sollte man sich genau überlegen: Ich würde friend nur in Ausnahmefällen einsetzen.
+
+===================================================================
+
+
+Aufgabe Wallet:
+
+ std::cout << wallet << std::endl;
+
+ NEIN:
+
+ Statt dessen:
+
+ wallet.print();
+ wallet.add(5);   // 5 Euros
+
+ wallet.add(5, 25);   // 5 Euros und 25 Cent
+
+ bool success = wallet.sub(3);    // 3 Euros entnehmen
+
+ // Geht nur , wenn genügend Geld im Geldbeutel ist 
+
+ == Konstruktoren  // Am Anfang ist da ein Euro drin (( leer: 0
+
+ == Methoden
+
+ == Operatoren:   operator ==
+
+ ==               operator <    // in welchem von 2 Geldbeuteln ist mehr drin
+
+      Die Operatoren IN oder AUSSERHALB der Klasse implementieren.
+
+
+Das genügt.
+
+
 
