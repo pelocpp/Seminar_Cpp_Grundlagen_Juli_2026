@@ -182,7 +182,7 @@ bool operator== (const Time& lhs, const Time& rhs)
 }
 
 // hier wird das Parameter Objekt verändert ===> eine const Referenz geht hier nicht
-void incrementSecond(const Time& time)
+void incrementSecond(Time& time)
 {
     // ACHTUNG: EIN FEHLER
     time.setHours(0);  // ist falsch, ist irgendwie passiert ...........

@@ -141,6 +141,8 @@
   <ItemGroup>
     <ClCompile Include="04_PassingParameters.cpp" />
     <ClCompile Include="03_Pointer_Refernces.cpp" />
+    <ClCompile Include="05_Vererbung.cpp" />
+    <ClCompile Include="06_Dynamic.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="02_This.cpp" />
     <ClCompile Include="01_Time.cpp" />

@@ -438,8 +438,218 @@ Aufgabe Wallet:
 
       Die Operatoren IN oder AUSSERHALB der Klasse implementieren.
 
+========================================
 
-Das genügt.
+Vererbung // Inheritance
 
 
+
+// Eine Klasse für Rechtecke
+
+class Rectangle
+
+// Brauchen noch eine solche Klasse: Rechtecke mit Farbe
+
+Wann sollte / kann / darf man das Feature der Vererbung sinnvoll anwenden ???
+
+Betrachtung / Entwurf / Design von Software:
+
+a) Klasse Rectangle
+b) Klasse ColoredRectangle
+
+Aufgabe:  Umgangssprachlichen Satz, in dem die zwei Wörter Rectangle und ColoredRectangle vorkommen.
+
+i) Ein ColoredRectangle ist eine Variante von einem Rectangle.
+
+ii) Ein ColoredRectangle ist ein Rectangle.
+
+Beziehungen zwischen Klassen // Relationsship:
+
+A) Beziehung "ist-ein"  // "is-a" Relationsship
+
+   Die  "ist-ein" Beziehung muss erfüllt sein, wenn ich die Vererbung anwenden möchte.
+
+=============================================================================
+
+Probe:
+
+a) Klasse Point   // 2-dim Ebene
+b) Klasse Line    // 2-dim Ebene
+
+Satz:
+
+a) Zwei Punkte sind eine Linie.   // hmmmmmmmmmm
+
+b) Eine Linie kann aus 2 Punkten bestehen // hat zwei Punkte // Anfangs- und Ende-Punkt
+
+c) Ein Punkt ist eine Linie: Wahr oder falsch: Falsch
+   Zwei Punkte sind eine Linie: So nicht in der Formulierung ...
+
+   Eine Linie ist ein Punkt: Eher nein
+   Eine Linie hat zwei Punkte: Kann man sagen // Schönheit des Satzes ist etwas einfach.
+   Eine Linie besteht aus zwei Punkten: Etwas besser in der Formulierung.
+
+
+b) Beziehung "hat-ein"  // "has-a" Relationsship
+
+   // ein darf auch Plural sein // mehrere
+
+   Ist die "hat-ein" Beziehung vorhanden, dass darf VERERBUNG NICHT angewendet werden.
+
+   Hmm, was dann:
+
+   Festlegung von Member Variablen.
+
+   class Line
+   {
+       Point m_begin;
+	   Point m_end;
+
+
+=============================================================================
+
+Nomenklatur bei der Vererbung:
+
+class Rectangle
+{
+public:
+    int m_x;       // linke, obere Ecke
+    int m_y;
+    int m_width;
+    int m_height;
+};
+
+class ColoredRectangle : public Rectangle
+{
+public:
+    int m_color;
+};
+
+Man spricht von 
+
+== Basisklasse // Vaterklasse // Parent Class // Base class
+== Kindklasse // child class // Abgeleitete Klasse // Derived Class
+
+== Im Ganzen:
+
+   - Eine Kindklasse ist eine Spezialisierung einer Vaterklasse.
+   - Eine Vaterklasse stellt die Verallgemeinerung (Gerneralisierung) einer Kindklasse dar.
+
+Durch die Vererbung werden alle Member-Variablen der Vaterklasse an die Kindklasse geerbt.
+
+
+a) Wie gelangen Daten in eine Objekt: Durch Konstruktoren
+
+b) Wie gelangen Daten in eine Basisklasse eines Objekts: Durch die Memberwise Initializer List ( : nach dem Konstruktor)
+
+  2 Möglichgkeiten:
+
+  i)  Man öffne die Basisklasse für Kindklassen: protected
+  ii) (private): Ich benötige einen Basisklassenkonstruktor, den ich in der Memberwise Initializer List
+      der abgeleiteten Klasse aufrufe.
+
+
+============================================================================
+
+Bemerkung:
+---------
+
+Regelfall: Eine Klasse und ihre Implementierung wird auf 2 Dateien AUFGETEILT.
+
+Ausnahmen:
+
+i) Kleine Klassen.
+ii) Klassen, die ich nur in EINER Datei benötige.
+iii) ZB kleine Klassen, um etwas zu demonstrieren.
+
+Dann kann man eine Klasse auch in EINER Datei realisieren.
+
+============================================================================
+
+Virtuellen Methodenaufrufmechanismus
+------------------------------------
+
+    rp->print();    // Welches print  wird aufgerufen ????????????????????????????????????
+                    // Das von Rectangle: WEIL rp ist vom Typ Rectangle (Compile / Übersetzungszeit)
+                    // oder
+                    // Das von ColoredRectangle: WEIL rp zeigt auf ein ColoredRectangle Objekt (Laufzeit / Runtime)
+
+
+Virtuelle Methoden:
+
+      Laufzeit entscheidet  // Late-Binding // Spätes Binden der Methodenadresse // Indirekter Methodenaufruf
+	                        // Runtime // (Langsamere Ausführung)
+
+Nicht-Virtuelle Methoden:
+
+      Übersetzungszeit entscheidet // Early-Binding // Frühes Binden der Methodenadresse // Compile-Time // (Schnelle Ausführung)
+
+virtual:
+
+== Kennzeichnet Methoden in Basisklassen
+== Diese haben eine Realisierung
+== Diese Realisierung kann in Kindklassen geändert / erweitert werden.
+
+
+i) virtual ist eine Einladung, dass diese Methode in der Kindklasse überschrieben wird. // muss aber nicht sein.
+
+ii) non-virtual: Diese Methode wird an alle Kinkobjekte ver-erbt. Es gibt keinen Grund für eine Änderung dieser Methode.
+
+
+=====================================================================================================
+
+Dynamische Speicherverwaltung
+
+new: reserviert Speicher
+
+delete: Hebt die Reservierung auf.
+
+Nochmal delete: Stürtz ab, weil dieser Zeiger so nicht mehr gültig ist.
+
+
+=====================================================================================================
+
+Array / Feld:
+
+Eindimsionale Liste:
+
+int zahlen[10];   Da liegen 10 int-Werte im Speicher DIREKT hintereinander.
+
+
+Listen FESTER Länge: Array (Feld) // int zahlen[10]; 
+
+Listen VARIABLER Länge: mit new/delete // std::vector 
+
+Frage: Was geschieht mit dem Gesamt-Progamm, wenn einzelne delete's fehlen.
+
+Aufgabe:
+
+Kiosk:  Lose für eine Lotterie
+
+
+ class LotteryTickets
+ {
+ private:
+     int  m_count;     // Anzahl Tickets
+     int* m_tickets;   // Diese Adresse // Pointer enthält das Ergebnis von new ...
+ 
+ public:
+     LotteryTickets() : m_count (0), m_tickets (NULL)
+     {
+         std::srand(  std::srand(  ( unsigned int)    std::time(0)); ); // use current time as seed for random generator
+     }
+
+	 LotteryTickets(int count) : m_count (count), m_tickets (NULL)
+     {
+         std::srand( std::srand(  ( unsigned int)  std::time(0)); ); // use current time as seed for random generator
+     }
+
+A) Im Konstruktor wird die Anzahl der Lose übergeben
+
+B) In einer Methode 'buyTickets' werden m_count Lose angelegt (Feld m_tickets dynamisch mit new[m_count] anlegen .. )
+   und belegt das Feld mit rand() Zahlen vor.
+
+C) In einer Methode print werden die Lose ausgegeben.
+
+D) In einer Methode release wird das dynamisch angelegte Feld freigegeben (delete[])
 

@@ -7,10 +7,18 @@
 // externe Funktionen
 extern void test_pointer_references();
 extern void test_passing_parameters();
+extern void test_vererbung();
+extern void test_dynamic();
 
 int main()
 {
-    // Thema: XXX
+    test_dynamic();
+}
+
+
+int main_passing_objects_as_parameters()
+{
+    // Thema: Parameterübergabe mit Objekten
 
     Time now(9, 7, 25);
     now.print();
@@ -18,6 +26,7 @@ int main()
     incrementSecond(now);
     now.print();
 
+    return 1;
 }
 
 
