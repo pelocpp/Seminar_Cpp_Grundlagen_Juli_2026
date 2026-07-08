@@ -869,3 +869,158 @@ e) WICHTIG: Man kann  / sollte die Kapazität von Anfang an einstellen.
 STL:   Getting Started  
 
 More STL: STL Konzepten
+
+=================================================================
+
+STL Konzepte:
+
+== STL Container
+
+== STL Iteratoren
+
+== STL Algorithmen
+
+== Aufrufbare Funktionen  // freie Funktionen
+
+
+
+Konzeption: Alexander Stepanow
+
+Sind viele gute Ideen vorhanden
+
+Man muss diese zu einem gewissen Grad verstehen.
+
+-----------------------------------------------------------------
+
+== STL Container:
+
+   Eine Art Schachtel für Daten.
+
+   std::vector:   Da liegen die Daten  DICHT im Speicher.
+
+Siehe auch hier:
+
+https://github.com/pelocpp/cpp_clean_performant_secure/blob/master/Clean_Performant_Code/Data_Structures_and_Algorithms/Readme_STL_Container.md
+
+Assoziative Container (Associative Container):
+
+A) Telefonbuch:
+
+"Name"   - Nummer
+
+"Hans Meier" - 123456789
+
+Pro Eintrag:
+
+"Name":    Schlüssel
+Nummer:    Wert
+
+B) Wörterbuch:
+
+Deutsch - Englisch
+
+"Straße"  -- "street"
+
+
+"Straße":  Schlüssel
+"street" : Wert
+
+Schlüssel / Wert === Key / Value Paar / Pair
+
+============================================
+
+Einfache Form des Assoziativen Containers:
+
+Nur Schlüssel - keine Werte:
+
+Beispiel: 
+
+Navigations SW // Liste aller Städte:
+
+std::vector:  "Nürnberg" / "Erlangen" / "Fürth" / "Schwabach"
+
+Hmmm, ist "Schwabach" vorhanden ???   ==> std::vector von Anfang an durchsuchen :: Das kostet Zeit
+
+Datentrukturen:  Binärer Suchbaum.
+
+
+Hash Tabelle : Was ist das ???
+
+== Eine Ansammlung von Schlüssel / Wert Paaren.
+
+Wir haben einen Schlüssel: "Franz Schneider"
+
+   Trick / Idee: Man berechnet einen INDEX zu diesem Schlüssel.  Für ein Array / Feld:  // Schnell
+
+    "Franz Schneider" ==> 1  // Wie ??? // Hash Funktion 
+
+-----------------------------------------------------------------
+
+== STL Container:
+
+Hat ein Konzept:
+
+Es soll zwischen den Containern und dem Zugriff auf die Container
+eine gewisse Transparenz / Austauschbarkeit vorliegen.
+
+std::list list;
+
+   int n =list [3];   // Könnte man machen  // Mit Gewalt // aber mit schlechter Komplexität
+
+   Also Fehler.
+
+---------------------------------------------------------------
+
+STL  Iterators
+
+Was ist ein STL Iterator:  Er beschreibt eine POSITION in einem Container.
+
+Wie bekommt man von einem Container so eine Position:
+
+Per Definition:  Mit zwei Methoden.
+
+begin()
+end()
+
+
+Was kann ein Iterator ???
+Welche Methoden gibt es an einem Iterator Objekt ??? Keine, sondern Operatoren.
+
+std::vector<int>::iterator pos;
+
+
+3 Operatoren:
+
+a) ++       Gehe zum nächsten Element im Container.
+
+b) *        Liefere das Element an dieser Stelle / Position zurück.
+
+c) ==, !=   Vergleiche zwei Positionen
+
+
+=================================================================================
+
+STL Algorithmen
+
+Diese können versorgt werden mit
+
+a) freien Funktionen
+
+b) mit aufrufbaren Objekten
+
+
+
+=================================================================================
+
+Abschluss:
+----------
+
+Ein etwas komplexeres Beispiel:
+
+Telefonbuch.
+
+
+Zu "Hans Meier" soll die Klasse Phonebook die Telefonnummer verwalten.
+
+
+

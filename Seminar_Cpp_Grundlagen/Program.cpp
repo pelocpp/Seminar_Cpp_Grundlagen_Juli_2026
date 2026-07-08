@@ -9,7 +9,9 @@ int main()
 {
    // std::println("g_counter: {}", g_counter);
 
-    test_stl();
+   // test_stl();
+
+    aufgabe_STLPhoneBook();
 }
 
 

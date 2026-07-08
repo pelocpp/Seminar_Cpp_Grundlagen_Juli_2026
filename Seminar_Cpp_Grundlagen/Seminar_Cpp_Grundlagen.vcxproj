@@ -147,6 +147,8 @@
     <ClCompile Include="08_Static_in_Classes.cpp" />
     <ClCompile Include="09_Rule_of_Three.cpp" />
     <ClCompile Include="11_STL.cpp" />
+    <ClCompile Include="12_PhonebookVector.cpp" />
+    <ClCompile Include="12_PhonebookVector_Main.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="02_This.cpp" />
     <ClCompile Include="01_Time.cpp" />
@@ -157,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="PhoneBookVector.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>

@@ -11,6 +11,7 @@ extern void test_schablonen();
 extern void test_stl();
 
 extern void aufgabe_lottery();
+extern void aufgabe_STLPhoneBook();
 
 // globale Variablen
 extern int g_counter;  // Deklaration des Vertrauens , wird nicht überprüft bei Syntax-Check
