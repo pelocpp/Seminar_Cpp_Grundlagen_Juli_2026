@@ -145,9 +145,12 @@
     <ClCompile Include="06_Dynamic.cpp" />
     <ClCompile Include="07_Memory_Management.cpp" />
     <ClCompile Include="08_Static_in_Classes.cpp" />
+    <ClCompile Include="09_Rule_of_Three.cpp" />
+    <ClCompile Include="11_STL.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="02_This.cpp" />
     <ClCompile Include="01_Time.cpp" />
+    <ClCompile Include="10_Schablonen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Notizzettel.txt" />

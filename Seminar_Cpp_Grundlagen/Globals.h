@@ -6,6 +6,9 @@ extern void test_passing_parameters();
 extern void test_vererbung();
 extern void test_dynamic();
 extern void main_MemoryManagement();
+extern void test_rule_of_three();
+extern void test_schablonen();
+extern void test_stl();
 
 extern void aufgabe_lottery();
 

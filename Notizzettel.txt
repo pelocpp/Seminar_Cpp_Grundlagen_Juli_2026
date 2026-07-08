@@ -780,5 +780,92 @@ Bemerkung:
    Es spricht nichts dagegen, auch eine explizite release-Methode hierfür zu implementieren.
 
 
-   10:55
-   -----
+======================================================================================
+
+Rule of Three:
+
+Kopie eines Objekts erstellen geht:
+
+Alle Werte werden kopiert:  Zahlen (int), Adressen (Pointer)
+
+Wenn Adressen vorhanden sind: PROBLEMATISCH // FALSCH
+
+Lösung: Man muss den Kopier-Konstruktor EXPLIZiT implementieren.
+
+Maschinenraum von C++
+---------------------
+
+Whyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+
+Um bei delete - Aufrufen nicht denselben Zeiger 2-Mal freizugeben (double-delete / Absturz)
+und um bei Objekte eine echte Kopie zu erhalten.
+
+Siehe auch
+
+Das copy-Modul (Standardweg)
+
+Python bietet zwei Arten von Kopien über das copy-Modul:
+
+Flache Kopie (copy.copy): Kopiert das Objekt, verweist bei verschachtelten Objekten aber weiterhin auf dieselben Referenzen.
+
+Tiefe Kopie (copy.deepcopy): Kopiert das Objekt und alle darin enthaltenen Objekte rekursiv (erzeugt eine komplett unabhängige Kopie).
+
+
+==================================================================
+==================================================================
+
+Template:
+
+A) Man kann eine Klasse konkret - also mit bekannten, fixen Datentypen - definieren.
+
+B) Man kann eine Klasse schablonenhaft - also mit Stellvertretern für Datentypen - definieren.
+
+   Möchte man zu so einer Schablone eine konkrete Klasse haben, muss man dies bei Verwendung der Schablone angeben.
+
+
+
+==================================================================
+==================================================================
+
+STL:   Standard Template Library
+
+Bjarne Stroustrup:   C++                                      // C with Classes   // no templates
+
+Alexander Alexandrowitsch Stepanow: Generische Programmierung // Programmieren mit Templates
+
+                                    Ersteller der erste C++ Standard Template Library.
+
+==================================================================
+
+Erstes Beispiel:
+
+Analogie:  Python List
+
+C++:       std::vector
+
+VORSICHT: Ein zentraler Unterschied:
+
+Python:    [ 1, 2, 3, 4]   // [ 1, 1.5, "ABC" ]
+
+C++:    Die Werte müssen vom SELBEN Typ sein.
+
+======================================================================
+
+
+std::vector:
+
+a) Belegt intern Speicher
+
+b) Beobachtung: Mehr, als tatsächlich benötigt wird.
+
+c) getter capacity sagt, wieviel intern vorhanden ist
+
+d) Bemkerkung: Visual C++:  Neue Kapazität = Alte Kapazität * 1.5  
+
+e) WICHTIG: Man kann  / sollte die Kapazität von Anfang an einstellen.
+
+==================================================================
+
+STL:   Getting Started  
+
+More STL: STL Konzepten

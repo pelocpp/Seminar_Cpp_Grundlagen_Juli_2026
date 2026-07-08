@@ -9,7 +9,7 @@ int main()
 {
    // std::println("g_counter: {}", g_counter);
 
-   aufgabe_lottery();
+    test_stl();
 }
 
 
