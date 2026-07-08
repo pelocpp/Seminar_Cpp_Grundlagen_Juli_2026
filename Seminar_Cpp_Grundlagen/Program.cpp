@@ -1,18 +1,15 @@
 
 #include "Time.h"
+#include "Globals.h"
 
 #include <print>
 #include <iostream>
 
-// externe Funktionen
-extern void test_pointer_references();
-extern void test_passing_parameters();
-extern void test_vererbung();
-extern void test_dynamic();
-
 int main()
 {
-    test_dynamic();
+   // std::println("g_counter: {}", g_counter);
+
+   aufgabe_lottery();
 }
 
 

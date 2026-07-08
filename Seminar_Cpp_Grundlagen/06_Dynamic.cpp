@@ -99,3 +99,69 @@ void test_dynamic()
 
     delete[] ip;
 }
+
+
+// Dynamic_Memory_Lottery::LotteryTickets
+
+namespace Dynamic_Memory_Lottery
+{
+    class LotteryTickets
+    {
+    private:
+        int  m_count;
+        int* m_tickets;
+
+    public:
+        LotteryTickets() : m_count(0), m_tickets(NULL)
+        {
+            std::srand(static_cast<unsigned int>(std::time(0))); // use current time as seed for random generator
+        }
+
+        ~LotteryTickets() {
+            delete[] m_tickets;
+            // m_tickets = NULL;   // NEIN, das ist überflüssig, der Speicher des Objekts wird ja gerade freigegeben
+        }
+
+        void buyTickets(int count)
+        {
+            m_count = count;
+            m_tickets = new int[m_count];   // buying 'count' tickets at once
+
+            for (int i = 0; i < m_count; i++) {
+                m_tickets[i] = 1 + rand() % 49;
+            }
+        }
+
+        void printTickets()
+        {
+            for (int i = 0; i < m_count; i++) {
+                std::cout << "Ticket " << (i + 1) << ": " << m_tickets[i] << std::endl;
+            }
+        }
+
+        void release() {
+            delete[] m_tickets;
+            m_tickets = NULL;
+        }
+    };
+}
+
+void aufgabe_lottery()
+{
+    std::cout << "How many lottery tickets do you want to buy? ";
+
+    int numTickets;
+    std::cin >> numTickets;
+
+    Dynamic_Memory_Lottery::LotteryTickets lottery;
+    lottery.buyTickets(numTickets);
+    lottery.printTickets();
+    lottery.release();
+    // ... noch was anderes .....
+
+    lottery.buyTickets(numTickets);
+    lottery.printTickets();
+    lottery.release();
+
+}
+

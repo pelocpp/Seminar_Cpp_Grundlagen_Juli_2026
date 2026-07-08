@@ -36,12 +36,21 @@
     <ClCompile Include="06_Dynamic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="07_Memory_Management.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="08_Static_in_Classes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Notizzettel.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Time.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

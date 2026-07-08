@@ -659,3 +659,126 @@ D) In einer Methode release wird das dynamisch angelegte Feld freigegeben (delet
 
 == Destruktor
 
+==========================================================================
+
+A) Globale Variablen: Im gesamten Programm
+------------------------------------------
+
+i) Ist in EINER C-Datei zu definieren:
+
+   int g_counter = 0;    // Ausserhalb von Funktionen // MIT Vorbelegungswert
+
+ii) In jeder anderen Datei, in der ich diese Variable verwenden möchte:
+
+   extern int g_counter; // eine extern Deklaration
+
+   Tipp: Best Practice: Hierfür verwendet man eine Header-Datei
+
+---------------------------------------------------------------------
+
+B) Globale Variablen - aber nur in EINER Datei
+----------------------------------------------
+
+   Datei-global  // einfaches Modulkonzept
+
+   SYNTAX: Wie Globale Variablen Definition , nur mit dem Schlüsselwort static
+
+---------------------------------------------------------------------
+
+C) Globale Variablen - aber nur in EINER Funktion / Methode
+-----------------------------------------------------------
+
+Auch hier kommt das Schlüsselwort static zum Einsatz:
+
+static void main_GlobalVariable_WithinFunction()
+{
+    static int a = 1;
+
+    a++;
+
+    std::println("in main_GlobalVariable_WithinFunction: a = {}", a);
+}
+
+Ergibt das Sinn ???
+
+Durchaus: Ich kann auf diese Weise erreichen, dass meine globale Variable geschützt ist.
+
+-----------------------------------------------------------------
+
+D) Lokale Variablen
+
+Innerhalb von Funktionen / Methoden
+
+-----------------------------------------------------------------
+
+E) Dynamisch erzeugte Variablen
+
+new / delete
+
+
+======================================================================
+
+namespace
+
+Mit namespace kann man Konflikte mit doppelten Namen verhindern:
+
+A) 
+
+class Window {}    // problematisch ...dieser Name darf so NIRGENDS woanders verwendet werden
+
+B)
+
+namespace Project_A
+{
+    class Window {}  
+}
+
+namespace Project_B
+{
+    class Window {}  
+}
+
+void main()
+{
+    Window w;   // Fehler
+
+	Project_A::Window w1;  // geht
+
+	// und in derselben Funktion:
+
+	Project_B::Window w2;  // geht
+}
+
+==============================================
+
+Dynamische Speicherverwaltung:
+
+A) new / delete
+
+B) Klassen und Objekte:
+
+   Hier können Zeiger von dynamisch reverviertem Speicher in den Membervariablen liegen / aufgehoben werden.
+
+C) Wann / wie kommt es zum Aufruf von delete dieses revervierten Speichers?
+
+i)  Explizite Methode, z. B. 'release'
+
+ii) Konzept des Destruktors:
+
+    Ähnlich zum Konzept eines Konstruktors:
+
+	= Ist eine Spezialmethode (nur eine)
+	= Wird aufgerufen, wenn ein Objekt aus dem Scope fällt / zerstört wird.
+	= SYNTAX: Name der Methode: Wie Name der Klasse , mit führendem ~
+	= Nochmal: Der Aufruf eines Destruktors wird AUTOMATISCH abgesetzt !!!
+
+
+Fazit: Wenn in Klassen in den Member Variablen Zeiger vorhanden sind (durch new erzeugt),
+   dann muss diese Klasse einen Destruktor haben mit passendem delete Aufruf.
+
+Bemerkung:
+   Es spricht nichts dagegen, auch eine explizite release-Methode hierfür zu implementieren.
+
+
+   10:55
+   -----
